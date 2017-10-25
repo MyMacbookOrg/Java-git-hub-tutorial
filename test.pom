@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>myXsd</groupId>
+	<artifactId>myXsd</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>myXsd</name>
+	<description>myXsd</description>
+	<packaging>jar</packaging>
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>2.3</version>
+				<executions>
+					<execution>
+						<id>generate-my-classes</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+					</execution>
+				</executions>
+				
+				<configuration>
+					<xjbSources>
+						<xjbSource>../myXsd/xsd/A.xjb</xjbSource>
+					</xjbSources>
+					<args>
+						<arg>-Xsetters</arg>
+					</args>
+					<outputDirectory>C:\Users\myXsd\xsdclassess\</outputDirectory>
+					<schemaDirectory>./xsd</schemaDirectory>
+					<sources>
+						<source>../ObjModelXsd/xsd/myXsd.xsd</source>
+					
+					</sources>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-basics</artifactId>
+				<version>1.11.1</version>
+			</plugin>
+			<plugin>
+			<artifactId>maven-jar-plugin</artifactId> 
+			<configuration>
+					<excludes>
+						<exclude>**/*.java</exclude>
+					</excludes>
+					</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
